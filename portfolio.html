@@ -1,1 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Prénom Nom] — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+    --navy:#0b1e33; --navy-2:#123a5e;
+    --turquoise:#17a6a0; --turquoise-light:#5fd6ce;
+    --offwhite:#f7f5ef; --paper:#ffffff;
+    --green:#5b8c6e; --ink:#132330; --ink-soft:#5b6b78;
+    --line: rgba(11,30,51,0.09);
+    --shadow: 0 20px 50px -20px rgba(11,30,51,0.18);
+    --shadow-sm: 0 8px 20px -10px rgba(11,30,51,0.15);
+    --ease: cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:100px;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--offwhite);line-height:1.65;overflow-x:hidden;}
+h1,h2,h3{font-family:'Fraunces',serif;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+::selection{background:var(--turquoise-light);color:var(--navy);}
 
+/* HEADER */
+.pf-header{
+    background:linear-gradient(160deg, var(--navy), var(--navy-2));
+    color:#fff; padding:110px 20px 90px; text-align:center; position:relative; overflow:hidden;
+}
+.pf-header::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 30%, rgba(23,166,160,0.2), transparent 45%),
+               radial-gradient(circle at 80% 80%, rgba(91,140,110,0.18), transparent 40%);
+}
+.pf-header .in{ position:relative; z-index:2; max-width:800px; margin:0 auto; }
+.pf-eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--turquoise-light); margin-bottom:18px; display:inline-block;
+}
+.pf-header h1{ font-size:clamp(2.2rem,4.6vw,3.4rem); font-weight:500; margin-bottom:18px; }
+.pf-header h1 em{ color:var(--turquoise-light); font-style:italic; font-weight:300; }
+.pf-header p{ color:rgba(247,245,239,0.75); font-size:1.05rem; margin-bottom:36px; }
+.pf-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 30px; border-radius:40px; text-decoration:none; font-weight:600; font-size:0.95rem; transition:all .3s var(--ease); border:none; cursor:pointer; }
+.btn-primary{ background:var(--turquoise); color:var(--navy); box-shadow:0 14px 30px -10px rgba(23,166,160,0.55); }
+.btn-primary:hover{ transform:translateY(-3px); background:var(--turquoise-light); }
+.btn-ghost{ background:rgba(255,255,255,0.08); color:#fff; border:1.5px solid rgba(255,255,255,0.25); }
+.btn-ghost:hover{ border-color:var(--turquoise-light); background:rgba(95,214,206,0.1); }
+
+/* STATS */
+.wrap{ max-width:1360px; margin:0 auto; padding:0 24px; }
+.stats{ margin-top:-50px; position:relative; z-index:5; margin-bottom:80px; }
+.stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+.stat{
+    background:var(--paper); border-radius:18px; padding:30px 22px; text-align:center;
+    box-shadow:var(--shadow-sm); border:1px solid var(--line); transition:all .3s var(--ease);
+}
+.stat:hover{ transform:translateY(-8px); box-shadow:var(--shadow); }
+.stat .ic{
+    width:56px;height:56px;border-radius:50%;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;
+    background:linear-gradient(135deg,var(--turquoise),var(--green));
+}
+.stat .num{ font-family:'Fraunces',serif; font-size:2.2rem; font-weight:600; color:var(--navy); margin-bottom:6px; }
+.stat .lbl{ color:var(--ink-soft); font-size:0.92rem; font-weight:500; }
+
+/* FILTERS */
+.filters{ text-align:center; margin-bottom:50px; }
+.filters h2{ color:var(--navy); font-size:1.8rem; font-weight:500; margin-bottom:26px; }
+.filter-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+.filter-btn{
+    padding:12px 24px; background:var(--paper); border:1.5px solid var(--line); color:var(--navy);
+    border-radius:40px; cursor:pointer; font-weight:600; font-size:0.92rem; transition:all .3s var(--ease);
+    display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif;
+}
+.filter-btn:hover, .filter-btn.active{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; border-color:transparent;
+    transform:translateY(-2px); box-shadow:var(--shadow-sm);
+}
+
+/* PROJECT GRID */
+.pf-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:28px; margin-bottom:100px; }
+.pf-card{
+    background:var(--paper); border-radius:20px; overflow:hidden; border:1px solid var(--line);
+    box-shadow:var(--shadow-sm); transition:all .35s var(--ease); opacity:0; transform:translateY(24px);
+    animation:cardIn .7s var(--ease) forwards; animation-delay:calc(var(--i)*0.08s);
+}
+@keyframes cardIn{ to{ opacity:1; transform:translateY(0); } }
+.pf-card:hover{ transform:translateY(-10px); box-shadow:var(--shadow); border-color:var(--turquoise); }
+.pf-top{
+    height:170px; position:relative; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--navy), var(--navy-2));
+}
+.pf-top i{ font-size:2.6rem; color:var(--turquoise-light); opacity:0.9; }
+.pf-top .cat{
+    position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.94); color:var(--navy);
+    padding:6px 16px; border-radius:20px; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:6px;
+}
+.pf-body{ padding:26px; }
+.pf-body h3{ color:var(--navy); font-size:1.28rem; font-weight:600; margin-bottom:12px; }
+.pf-body p{ color:var(--ink-soft); margin-bottom:20px; font-size:0.95rem; }
+.pf-features{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.pf-feature{
+    display:flex; align-items:center; gap:7px; background:var(--offwhite); padding:7px 13px;
+    border-radius:9px; font-size:0.82rem; color:var(--navy); font-weight:600;
+}
+.pf-feature i{ color:var(--turquoise); }
+.pf-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+.pf-tag{
+    font-family:'IBM Plex Mono',monospace; background:rgba(23,166,160,0.08); color:var(--turquoise);
+    padding:6px 13px; border-radius:20px; font-size:0.76rem; border:1px solid rgba(23,166,160,0.2);
+}
+.pf-actions-row{ display:flex; gap:12px; }
+.pf-btn{
+    flex:1; padding:12px; text-align:center; border-radius:12px; text-decoration:none; font-weight:700;
+    font-size:0.9rem; transition:all .3s var(--ease); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.pf-btn.solid{ background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; }
+.pf-btn.solid:hover{ transform:translateY(-2px); box-shadow:var(--shadow-sm); }
+.pf-btn.outline{ background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
+.pf-btn.outline:hover{ background:var(--navy); color:#fff; }
+
+/* MODAL */
+.modal-overlay{
+    display:none; position:fixed; inset:0; background:rgba(11,30,51,0.85); backdrop-filter:blur(10px);
+    z-index:1000; padding:24px; overflow-y:auto;
+}
+.modal{
+    max-width:880px; margin:50px auto; background:var(--paper); border-radius:22px; overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,0.4);
+}
+.modal-head{ background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; padding:36px; position:relative; }
+.modal-head h2{ color:#fff; font-size:1.8rem; margin-bottom:10px; font-weight:500; }
+.modal-cat{
+    display:inline-block; background:rgba(95,214,206,0.15); color:var(--turquoise-light);
+    padding:7px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; margin-bottom:16px;
+    border:1px solid rgba(95,214,206,0.3);
+}
+.modal-close{
+    position:absolute; top:22px; right:22px; background:rgba(255,255,255,0.12); border:none; color:#fff;
+    width:44px; height:44px; border-radius:50%; font-size:1.3rem; cursor:pointer; transition:all .3s var(--ease);
+}
+.modal-close:hover{ background:rgba(255,255,255,0.25); transform:rotate(90deg); }
+.modal-body{ padding:36px; }
+.modal-body h3{ color:var(--navy); font-size:1.1rem; margin-bottom:14px; font-weight:600; }
+.modal-body ul{ padding-left:20px; margin-bottom:26px; }
+.modal-body li{ margin-bottom:9px; color:var(--ink); }
+.modal-body li::marker{ color:var(--turquoise); }
+
+/* FOOTER */
+.pf-footer{
+    background:linear-gradient(160deg,var(--navy),var(--navy-2)); color:rgba(247,245,239,0.85);
+    padding:80px 20px 40px; text-align:center; position:relative;
+}
+.pf-footer::before{ content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--turquoise),var(--green),transparent); }
+.pf-footer .logo{ font-family:'Fraunces',serif; font-size:1.8rem; color:#fff; margin-bottom:16px; font-weight:500; }
+.pf-footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
+.foot-links{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:36px; }
+.foot-links a{
+    color:#fff; text-decoration:none; display:flex; align-items:center; gap:9px; padding:12px 24px;
+    border-radius:40px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    font-size:0.9rem; transition:all .3s var(--ease);
+}
+.foot-links a:hover{ background:rgba(95,214,206,0.15); border-color:var(--turquoise-light); transform:translateY(-3px); }
+.foot-links i{ color:var(--turquoise-light); }
+.copy{ font-size:0.8rem; color:rgba(247,245,239,0.45); border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; }
+
+.draft-note{
+    position:fixed; bottom:20px; right:20px; z-index:50; background:var(--navy); color:#fff;
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; padding:10px 16px; border-radius:10px;
+    opacity:0.85; box-shadow:var(--shadow-sm); max-width:220px; line-height:1.5; border:1px solid var(--turquoise);
+}
+
+@media (max-width:768px){
+    .pf-grid{ grid-template-columns:1fr; }
+    .pf-actions{ flex-direction:column; align-items:center; }
+    .btn{ width:100%; max-width:300px; justify-content:center; }
+    .draft-note{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="pf-header">
+    <div class="in">
+        <span class="pf-eyebrow">Génie Chimique &amp; Procédés</span>
+        <h1><i class="fas fa-flask"></i> Portfolio <em>complet</em></h1>
+        <p>Sélection de projets en procédés chimiques, contrôle qualité et R&amp;D — chaque projet illustre une approche rigoureuse appliquée à des enjeux industriels concrets.</p>
+        <div class="pf-actions">
+            <a href="index.html" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Retour au CV</a>
+            <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
+        </div>
+    </div>
+</header>
+
+<div class="wrap">
+
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat"><div class="ic"><i class="fas fa-flask"></i></div><div class="num">X+</div><div class="lbl">Projets réalisés</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-clock"></i></div><div class="num">X+</div><div class="lbl">Années d'expérience</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-certificate"></i></div><div class="num">X+</div><div class="lbl">Certifications</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-industry"></i></div><div class="num">X%</div><div class="lbl">Gain de rendement</div></div>
+    </div>
+</section>
+
+<section class="filters">
+    <h2>Filtrer par catégorie</h2>
+    <div class="filter-row">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> Tous les projets</button>
+        <button class="filter-btn" data-filter="procede"><i class="fas fa-industry"></i> Procédés</button>
+        <button class="filter-btn" data-filter="qualite"><i class="fas fa-shield-alt"></i> Qualité &amp; HSE</button>
+        <button class="filter-btn" data-filter="rd"><i class="fas fa-flask"></i> R&amp;D</button>
+        <button class="filter-btn" data-filter="analyse"><i class="fas fa-microscope"></i> Analyse</button>
+    </div>
+</section>
+
+<div class="pf-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="pf-card" data-cat="procede" style="--i:1;">
+        <div class="pf-top"><i class="fas fa-industry"></i><span class="cat"><i class="fas fa-industry"></i> Procédé</span></div>
+        <div class="pf-body">
+            <h3 id="projet-1">[Titre du projet — Optimisation de procédé]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">Procédés</span><span class="pf-tag">Optimisation</span><span class="pf-tag">Production</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-1')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="pf-card" data-cat="qualite" style="--i:2;">
+        <div class="pf-top"><i class="fas fa-shield-alt"></i><span class="cat"><i class="fas fa-shield-alt"></i> Qualité</span></div>
+        <div class="pf-body">
+            <h3 id="projet-2">[Titre du projet — Mise en conformité qualité]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">ISO</span><span class="pf-tag">HSE</span><span class="pf-tag">Audit</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-2')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="pf-card" data-cat="rd" style="--i:3;">
+        <div class="pf-top"><i class="fas fa-flask"></i><span class="cat"><i class="fas fa-flask"></i> R&amp;D</span></div>
+        <div class="pf-body">
+            <h3 id="projet-3">[Titre du projet — Développement de formulation]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">Formulation</span><span class="pf-tag">R&amp;D</span><span class="pf-tag">Innovation</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-3')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="pf-card" data-cat="analyse" style="--i:4;">
+        <div class="pf-top"><i class="fas fa-microscope"></i><span class="cat"><i class="fas fa-microscope"></i> Analyse</span></div>
+        <div class="pf-body">
+            <h3 id="projet-4">[Titre du projet — Analyse et caractérisation]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">HPLC</span><span class="pf-tag">Spectroscopie</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-4')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="pf-card" data-cat="procede" style="--i:5;">
+        <div class="pf-top"><i class="fas fa-cogs"></i><span class="cat"><i class="fas fa-industry"></i> Procédé</span></div>
+        <div class="pf-body">
+            <h3 id="projet-5">[Titre du projet — Réduction des coûts de production]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">Coûts</span><span class="pf-tag">Efficience</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-5')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="pf-card" data-cat="qualite" style="--i:6;">
+        <div class="pf-top"><i class="fas fa-clipboard-check"></i><span class="cat"><i class="fas fa-shield-alt"></i> Qualité</span></div>
+        <div class="pf-body">
+            <h3 id="projet-6">[Titre du projet — Système de management qualité]</h3>
+            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <div class="pf-features">
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+            </div>
+            <div class="pf-tags">
+                <span class="pf-tag">SMQ</span><span class="pf-tag">Traçabilité</span>
+            </div>
+            <div class="pf-actions-row">
+                <button class="pf-btn solid" onclick="openModal('modal-6')"><i class="fas fa-info-circle"></i> Aperçu</button>
+                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- MODALS (génériques, à personnaliser) -->
+<div id="modal-1" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 1]</h2>
+            <div class="modal-cat"><i class="fas fa-industry"></i> Procédés</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul>
+                <li>[Résultat quantifié 1]</li>
+                <li>[Résultat quantifié 2]</li>
+                <li>[Résultat quantifié 3]</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="modal-2" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 2]</h2>
+            <div class="modal-cat"><i class="fas fa-shield-alt"></i> Qualité</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+        </div>
+    </div>
+</div>
+<div id="modal-3" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 3]</h2>
+            <div class="modal-cat"><i class="fas fa-flask"></i> R&amp;D</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+        </div>
+    </div>
+</div>
+<div id="modal-4" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 4]</h2>
+            <div class="modal-cat"><i class="fas fa-microscope"></i> Analyse</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+        </div>
+    </div>
+</div>
+<div id="modal-5" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 5]</h2>
+            <div class="modal-cat"><i class="fas fa-industry"></i> Procédés</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+        </div>
+    </div>
+</div>
+<div id="modal-6" class="modal-overlay">
+    <div class="modal">
+        <div class="modal-head">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>[Titre du projet 6]</h2>
+            <div class="modal-cat"><i class="fas fa-shield-alt"></i> Qualité</div>
+            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+        </div>
+        <div class="modal-body">
+            <h3>Contexte</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
+            <h3>Résultats obtenus</h3>
+            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+        </div>
+    </div>
+</div>
+
+<footer class="pf-footer" id="contact">
+    <div class="logo">[Prénom Nom]</div>
+    <p>Passionnée par les défis techniques et l'innovation en chimie industrielle, toujours à la recherche de nouveaux projets stimulants.</p>
+    <div class="foot-links">
+        <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> prenom.nom@email.com</a>
+        <a href="tel:+21600000000"><i class="fas fa-phone"></i> (+216) 00 000 000</a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="index.html"><i class="fas fa-user-tie"></i> Mon CV</a>
+    </div>
+    <div class="copy">
+        <p>© <span id="yr"></span> [Prénom Nom] – Ingénieure Chimiste. Tous droits réservés.</p>
+        <p style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+    </div>
+</footer>
+
+<div class="draft-note"><i class="fas fa-pen"></i> Draft — les champs entre [crochets] seront remplacés par les vraies infos.</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.pf-card');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const f = btn.dataset.filter;
+            cards.forEach(c => {
+                c.style.display = (f === 'all' || c.dataset.cat === f) ? 'block' : 'none';
+            });
+        });
+    });
+
+    window.openModal = (id) => { document.getElementById(id).style.display = 'block'; document.body.style.overflow = 'hidden'; };
+    window.closeModal = () => {
+        document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none');
+        document.body.style.overflow = 'auto';
+    };
+    document.querySelectorAll('.modal-overlay').forEach(ov => {
+        ov.addEventListener('click', (e) => { if (e.target === ov) closeModal(); });
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+});
+</script>
+</body>
+</html>
