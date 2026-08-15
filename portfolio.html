@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Prénom Nom] — Portfolio</title>
+<title>Hajer Chakroun — Portfolio | Formulation Cosmétique &amp; R&amp;D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -74,7 +74,7 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 .filter-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
 .filter-btn{
     padding:12px 24px; background:var(--paper); border:1.5px solid var(--line); color:var(--navy);
-    border-radius:40px; cursor:pointer; font-weight:600; font-size:0.92rem; transition:all .3s var(--ease);
+    border-radius:40px; cursor:pointer; font-weight:600; font-size:0.9rem; transition:all .3s var(--ease);
     display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif;
 }
 .filter-btn:hover, .filter-btn.active{
@@ -91,17 +91,15 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 }
 @keyframes cardIn{ to{ opacity:1; transform:translateY(0); } }
 .pf-card:hover{ transform:translateY(-10px); box-shadow:var(--shadow); border-color:var(--turquoise); }
-.pf-top{
-    height:170px; position:relative; display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg, var(--navy), var(--navy-2));
-}
-.pf-top i{ font-size:2.6rem; color:var(--turquoise-light); opacity:0.9; }
+.pf-top{ height:180px; position:relative; overflow:hidden; background:linear-gradient(135deg, var(--navy), var(--navy-2)); }
+.pf-top img{ width:100%; height:100%; object-fit:cover; opacity:0.9; transition:transform .6s var(--ease); }
+.pf-card:hover .pf-top img{ transform:scale(1.08); }
 .pf-top .cat{
     position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.94); color:var(--navy);
     padding:6px 16px; border-radius:20px; font-weight:700; font-size:0.8rem; display:flex; align-items:center; gap:6px;
 }
 .pf-body{ padding:26px; }
-.pf-body h3{ color:var(--navy); font-size:1.28rem; font-weight:600; margin-bottom:12px; }
+.pf-body h3{ color:var(--navy); font-size:1.24rem; font-weight:600; margin-bottom:12px; }
 .pf-body p{ color:var(--ink-soft); margin-bottom:20px; font-size:0.95rem; }
 .pf-features{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
 .pf-feature{
@@ -122,8 +120,6 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 }
 .pf-btn.solid{ background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; }
 .pf-btn.solid:hover{ transform:translateY(-2px); box-shadow:var(--shadow-sm); }
-.pf-btn.outline{ background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
-.pf-btn.outline:hover{ background:var(--navy); color:#fff; }
 
 /* MODAL */
 .modal-overlay{
@@ -135,7 +131,7 @@ h1,h2,h3{font-family:'Fraunces',serif;}
     box-shadow:0 30px 70px rgba(0,0,0,0.4);
 }
 .modal-head{ background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff; padding:36px; position:relative; }
-.modal-head h2{ color:#fff; font-size:1.8rem; margin-bottom:10px; font-weight:500; }
+.modal-head h2{ color:#fff; font-size:1.75rem; margin-bottom:10px; font-weight:500; }
 .modal-cat{
     display:inline-block; background:rgba(95,214,206,0.15); color:var(--turquoise-light);
     padding:7px 18px; border-radius:20px; font-size:0.85rem; font-weight:600; margin-bottom:16px;
@@ -147,10 +143,12 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 }
 .modal-close:hover{ background:rgba(255,255,255,0.25); transform:rotate(90deg); }
 .modal-body{ padding:36px; }
-.modal-body h3{ color:var(--navy); font-size:1.1rem; margin-bottom:14px; font-weight:600; }
+.modal-body h3{ color:var(--navy); font-size:1.05rem; margin-bottom:14px; font-weight:600; }
 .modal-body ul{ padding-left:20px; margin-bottom:26px; }
 .modal-body li{ margin-bottom:9px; color:var(--ink); }
 .modal-body li::marker{ color:var(--turquoise); }
+.modal-gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:6px; }
+.modal-gallery img{ width:100%; height:150px; object-fit:cover; border-radius:14px; }
 
 /* FOOTER */
 .pf-footer{
@@ -170,17 +168,10 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 .foot-links i{ color:var(--turquoise-light); }
 .copy{ font-size:0.8rem; color:rgba(247,245,239,0.45); border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; }
 
-.draft-note{
-    position:fixed; bottom:20px; right:20px; z-index:50; background:var(--navy); color:#fff;
-    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; padding:10px 16px; border-radius:10px;
-    opacity:0.85; box-shadow:var(--shadow-sm); max-width:220px; line-height:1.5; border:1px solid var(--turquoise);
-}
-
 @media (max-width:768px){
     .pf-grid{ grid-template-columns:1fr; }
     .pf-actions{ flex-direction:column; align-items:center; }
     .btn{ width:100%; max-width:300px; justify-content:center; }
-    .draft-note{ display:none; }
 }
 </style>
 </head>
@@ -188,9 +179,9 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 
 <header class="pf-header">
     <div class="in">
-        <span class="pf-eyebrow">Génie Chimique &amp; Procédés</span>
+        <span class="pf-eyebrow">Formulation Cosmétique &amp; R&amp;D</span>
         <h1><i class="fas fa-flask"></i> Portfolio <em>complet</em></h1>
-        <p>Sélection de projets en procédés chimiques, contrôle qualité et R&amp;D — chaque projet illustre une approche rigoureuse appliquée à des enjeux industriels concrets.</p>
+        <p>Sélection de projets en formulation cosmétique, du concept au scale-up industriel — skincare, sun care, haircare, maquillage et recherche appliquée.</p>
         <div class="pf-actions">
             <a href="index.html" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Retour au CV</a>
             <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me contacter</a>
@@ -202,10 +193,10 @@ h1,h2,h3{font-family:'Fraunces',serif;}
 
 <section class="stats">
     <div class="stats-grid">
-        <div class="stat"><div class="ic"><i class="fas fa-flask"></i></div><div class="num">X+</div><div class="lbl">Projets réalisés</div></div>
-        <div class="stat"><div class="ic"><i class="fas fa-clock"></i></div><div class="num">X+</div><div class="lbl">Années d'expérience</div></div>
-        <div class="stat"><div class="ic"><i class="fas fa-certificate"></i></div><div class="num">X+</div><div class="lbl">Certifications</div></div>
-        <div class="stat"><div class="ic"><i class="fas fa-industry"></i></div><div class="num">X%</div><div class="lbl">Gain de rendement</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-clock"></i></div><div class="num">7+</div><div class="lbl">Années d'expérience</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-layer-group"></i></div><div class="num">5</div><div class="lbl">Segments cosmétiques maîtrisés</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-flask"></i></div><div class="num">50+</div><div class="lbl">Formulations développées*</div></div>
+        <div class="stat"><div class="ic"><i class="fas fa-handshake"></i></div><div class="num">20+</div><div class="lbl">Clients industriels accompagnés*</div></div>
     </div>
 </section>
 
@@ -213,256 +204,286 @@ h1,h2,h3{font-family:'Fraunces',serif;}
     <h2>Filtrer par catégorie</h2>
     <div class="filter-row">
         <button class="filter-btn active" data-filter="all"><i class="fas fa-layer-group"></i> Tous les projets</button>
-        <button class="filter-btn" data-filter="procede"><i class="fas fa-industry"></i> Procédés</button>
-        <button class="filter-btn" data-filter="qualite"><i class="fas fa-shield-alt"></i> Qualité &amp; HSE</button>
-        <button class="filter-btn" data-filter="rd"><i class="fas fa-flask"></i> R&amp;D</button>
-        <button class="filter-btn" data-filter="analyse"><i class="fas fa-microscope"></i> Analyse</button>
+        <button class="filter-btn" data-filter="skincare"><i class="fas fa-spa"></i> Skincare</button>
+        <button class="filter-btn" data-filter="suncare"><i class="fas fa-sun"></i> Sun Care</button>
+        <button class="filter-btn" data-filter="haircare"><i class="fas fa-water"></i> Haircare</button>
+        <button class="filter-btn" data-filter="makeup"><i class="fas fa-palette"></i> Maquillage</button>
+        <button class="filter-btn" data-filter="rd"><i class="fas fa-microscope"></i> R&amp;D</button>
     </div>
 </section>
 
 <div class="pf-grid">
 
-    <!-- PROJECT 1 -->
-    <div class="pf-card" data-cat="procede" style="--i:1;">
-        <div class="pf-top"><i class="fas fa-industry"></i><span class="cat"><i class="fas fa-industry"></i> Procédé</span></div>
+    <!-- 1 - SKINCARE -->
+    <div class="pf-card" data-cat="skincare" style="--i:1;">
+        <div class="pf-top"><img src="images/projects/skincare-formulation.jpg" alt="Formulation skincare"><span class="cat"><i class="fas fa-spa"></i> Skincare</span></div>
         <div class="pf-body">
-            <h3 id="projet-1">[Titre du projet — Optimisation de procédé]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Formulation soins visage &amp; anti-âge</h3>
+            <p>Conception et optimisation de crèmes et sérums hydratants/anti-âge : sélection des actifs, stabilité de l'émulsion et sensorialité de la texture.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Stabilité validée</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Texture optimisée</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">Procédés</span><span class="pf-tag">Optimisation</span><span class="pf-tag">Production</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Émulsions</span><span class="pf-tag">Actifs</span><span class="pf-tag">Stabilité</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-1')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="pf-card" data-cat="qualite" style="--i:2;">
-        <div class="pf-top"><i class="fas fa-shield-alt"></i><span class="cat"><i class="fas fa-shield-alt"></i> Qualité</span></div>
+    <!-- 2 - SUN CARE -->
+    <div class="pf-card" data-cat="suncare" style="--i:2;">
+        <div class="pf-top"><img src="images/projects/sun-care-uv.jpg" alt="Formulation solaire"><span class="cat"><i class="fas fa-sun"></i> Sun Care</span></div>
         <div class="pf-body">
-            <h3 id="projet-2">[Titre du projet — Mise en conformité qualité]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Formulation protection solaire</h3>
+            <p>Développement de produits solaires combinant filtres UV organiques et minéraux, avec optimisation du SPF, de l'étalement et de la résistance à l'eau.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Filtres UV combinés</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Formule non collante</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">ISO</span><span class="pf-tag">HSE</span><span class="pf-tag">Audit</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Filtres UV</span><span class="pf-tag">SPF</span><span class="pf-tag">Sensorialité</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-2')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 3 -->
-    <div class="pf-card" data-cat="rd" style="--i:3;">
-        <div class="pf-top"><i class="fas fa-flask"></i><span class="cat"><i class="fas fa-flask"></i> R&amp;D</span></div>
+    <!-- 3 - HAIRCARE -->
+    <div class="pf-card" data-cat="haircare" style="--i:3;">
+        <div class="pf-top"><img src="images/projects/haircare-shampoo.jpg" alt="Formulation capillaire"><span class="cat"><i class="fas fa-water"></i> Haircare</span></div>
         <div class="pf-body">
-            <h3 id="projet-3">[Titre du projet — Développement de formulation]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Shampoings &amp; après-shampoings</h3>
+            <p>Développement de systèmes nettoyants doux à base de tensioactifs sélectionnés, avec agents conditionneurs pour la sensorialité capillaire.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Mousse &amp; douceur</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Conditionnement optimisé</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">Formulation</span><span class="pf-tag">R&amp;D</span><span class="pf-tag">Innovation</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Tensioactifs</span><span class="pf-tag">Polymères</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-3')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 4 -->
-    <div class="pf-card" data-cat="analyse" style="--i:4;">
-        <div class="pf-top"><i class="fas fa-microscope"></i><span class="cat"><i class="fas fa-microscope"></i> Analyse</span></div>
+    <!-- 4 - MAQUILLAGE -->
+    <div class="pf-card" data-cat="makeup" style="--i:4;">
+        <div class="pf-top"><img src="images/projects/makeup-pigments.jpg" alt="Formulation maquillage"><span class="cat"><i class="fas fa-palette"></i> Maquillage</span></div>
         <div class="pf-body">
-            <h3 id="projet-4">[Titre du projet — Analyse et caractérisation]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Fonds de teint, gloss &amp; mascaras</h3>
+            <p>Formulation de produits de couleur avec dispersion des pigments, tenue, et compatibilité avec les systèmes émulsionnés ou anhydres.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Dispersion homogène</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Bonne tenue</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">HPLC</span><span class="pf-tag">Spectroscopie</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Pigments</span><span class="pf-tag">Silicones</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-4')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 5 -->
-    <div class="pf-card" data-cat="procede" style="--i:5;">
-        <div class="pf-top"><i class="fas fa-cogs"></i><span class="cat"><i class="fas fa-industry"></i> Procédé</span></div>
+    <!-- 5 - INDUSTRIALISATION / RD -->
+    <div class="pf-card" data-cat="rd" style="--i:5;">
+        <div class="pf-top"><img src="images/projects/scale-up-industrial.jpg" alt="Scale-up industriel"><span class="cat"><i class="fas fa-industry"></i> Industrialisation</span></div>
         <div class="pf-body">
-            <h3 id="projet-5">[Titre du projet — Réduction des coûts de production]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Accompagnement scale-up industriel</h3>
+            <p>Accompagnement de fabricants dans le passage de l'échelle laboratoire à l'échelle industrielle, avec adaptation des formules aux contraintes de production.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Transfert labo → usine</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Résolution technique</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">Coûts</span><span class="pf-tag">Efficience</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Scale-up</span><span class="pf-tag">Production</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-5')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 6 -->
-    <div class="pf-card" data-cat="qualite" style="--i:6;">
-        <div class="pf-top"><i class="fas fa-clipboard-check"></i><span class="cat"><i class="fas fa-shield-alt"></i> Qualité</span></div>
+    <!-- 6 - PFE ELECTRO-FENTON -->
+    <div class="pf-card" data-cat="rd" style="--i:6;">
+        <div class="pf-top"><img src="images/projects/electro-fenton-lab.jpg" alt="Projet Electro-Fenton"><span class="cat"><i class="fas fa-microscope"></i> R&amp;D</span></div>
         <div class="pf-body">
-            <h3 id="projet-6">[Titre du projet — Système de management qualité]</h3>
-            <p>[Description : contexte, objectif et démarche du projet — à compléter avec les vraies informations]</p>
+            <h3>Dégradation Electro-Fenton de la tétracycline</h3>
+            <p>Projet de fin d'études (SIPHAT) : étude d'un procédé d'oxydation avancée pour dégrader l'hydrochlorure de tétracycline en solution.</p>
             <div class="pf-features">
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 1]</div>
-                <div class="pf-feature"><i class="fas fa-check-circle"></i> [Résultat clé 2]</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Cinétique étudiée</div>
+                <div class="pf-feature"><i class="fas fa-check-circle"></i> Analyse DCO</div>
             </div>
-            <div class="pf-tags">
-                <span class="pf-tag">SMQ</span><span class="pf-tag">Traçabilité</span>
-            </div>
+            <div class="pf-tags"><span class="pf-tag">Oxydation avancée</span><span class="pf-tag">Recherche</span></div>
             <div class="pf-actions-row">
                 <button class="pf-btn solid" onclick="openModal('modal-6')"><i class="fas fa-info-circle"></i> Aperçu</button>
-                <a href="#" class="pf-btn outline"><i class="fas fa-file-pdf"></i> Fiche PDF</a>
             </div>
         </div>
     </div>
 
 </div>
+
+<p style="text-align:center;color:var(--ink-soft);font-size:0.82rem;margin-top:-70px;margin-bottom:70px;">* Chiffres estimatifs à confirmer avec Hajer avant publication.</p>
 </div>
 
-<!-- MODALS (génériques, à personnaliser) -->
+<!-- MODALS -->
 <div id="modal-1" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 1]</h2>
-            <div class="modal-cat"><i class="fas fa-industry"></i> Procédés</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Formulation soins visage &amp; anti-âge</h2>
+            <div class="modal-cat"><i class="fas fa-spa"></i> Skincare</div>
+            <p style="color:rgba(255,255,255,0.85);">Crèmes et sérums hydratants / anti-âge</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Conception de formulations skincare pour des marques et fabricants tunisiens, depuis le choix du concept jusqu'à la validation en laboratoire.</p>
+            <h3>Approche</h3>
             <ul>
-                <li>[Résultat quantifié 1]</li>
-                <li>[Résultat quantifié 2]</li>
-                <li>[Résultat quantifié 3]</li>
+                <li>Sélection des actifs et matières premières selon performance, coût et compatibilité</li>
+                <li>Essais laboratoire et études de stabilité (température, cycles, compatibilité contenant)</li>
+                <li>Optimisation de la texture, de l'aspect et de la sensorialité au toucher</li>
             </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/skincare-formulation.jpg" alt="Skincare formulation">
+                <img src="images/projects/skincare-lab.jpg" alt="Essais laboratoire skincare">
+            </div>
         </div>
     </div>
 </div>
+
 <div id="modal-2" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 2]</h2>
-            <div class="modal-cat"><i class="fas fa-shield-alt"></i> Qualité</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Formulation protection solaire</h2>
+            <div class="modal-cat"><i class="fas fa-sun"></i> Sun Care</div>
+            <p style="color:rgba(255,255,255,0.85);">Filtres UV organiques &amp; minéraux</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
-            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Développement de produits solaires répondant aux exigences de SPF, de texture et de résistance à l'eau demandées par les clients industriels.</p>
+            <h3>Approche</h3>
+            <ul>
+                <li>Combinaison de filtres UV organiques et minéraux selon le profil de protection visé</li>
+                <li>Optimisation de l'étalement et réduction de l'effet blanchissant</li>
+                <li>Validation de la stabilité de la formule en conditions réelles</li>
+            </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/sun-care-uv.jpg" alt="Sun care formulation">
+                <img src="images/projects/sun-care-lab.jpg" alt="Essais laboratoire sun care">
+            </div>
         </div>
     </div>
 </div>
+
 <div id="modal-3" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 3]</h2>
-            <div class="modal-cat"><i class="fas fa-flask"></i> R&amp;D</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Shampoings &amp; après-shampoings</h2>
+            <div class="modal-cat"><i class="fas fa-water"></i> Haircare</div>
+            <p style="color:rgba(255,255,255,0.85);">Systèmes nettoyants &amp; conditionneurs</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
-            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Formulation de produits capillaires équilibrant pouvoir nettoyant, douceur et sensorialité, à partir de tensioactifs et polymères sélectionnés.</p>
+            <h3>Approche</h3>
+            <ul>
+                <li>Choix de systèmes tensioactifs doux adaptés au cuir chevelu</li>
+                <li>Ajout d'agents conditionneurs pour la douceur et la démêlabilité</li>
+                <li>Ajustement de la viscosité et de la mousse</li>
+            </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/haircare-shampoo.jpg" alt="Haircare formulation">
+                <img src="images/projects/haircare-lab.jpg" alt="Essais laboratoire haircare">
+            </div>
         </div>
     </div>
 </div>
+
 <div id="modal-4" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 4]</h2>
-            <div class="modal-cat"><i class="fas fa-microscope"></i> Analyse</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Fonds de teint, gloss &amp; mascaras</h2>
+            <div class="modal-cat"><i class="fas fa-palette"></i> Maquillage</div>
+            <p style="color:rgba(255,255,255,0.85);">Formulation de produits de couleur</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
-            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Développement de produits de maquillage nécessitant une dispersion homogène des pigments et une bonne tenue dans le temps.</p>
+            <h3>Approche</h3>
+            <ul>
+                <li>Sélection des pigments et dispersants adaptés à la base (aqueuse, anhydre, émulsion)</li>
+                <li>Optimisation de l'application, de la tenue et du fini visuel</li>
+                <li>Tests de compatibilité entre pigments, silicones et actifs</li>
+            </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/makeup-pigments.jpg" alt="Makeup formulation">
+                <img src="images/projects/makeup-lab.jpg" alt="Essais laboratoire maquillage">
+            </div>
         </div>
     </div>
 </div>
+
 <div id="modal-5" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 5]</h2>
-            <div class="modal-cat"><i class="fas fa-industry"></i> Procédés</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Accompagnement scale-up industriel</h2>
+            <div class="modal-cat"><i class="fas fa-industry"></i> Industrialisation</div>
+            <p style="color:rgba(255,255,255,0.85);">Du laboratoire à la production industrielle</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
-            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Accompagnement technique de fabricants cosmétiques lors du passage de leurs formules du stade laboratoire à la production à grande échelle.</p>
+            <h3>Approche</h3>
+            <ul>
+                <li>Adaptation des formules aux contraintes des équipements industriels</li>
+                <li>Identification et résolution des problématiques de production (viscosité, stabilité en cuve...)</li>
+                <li>Accompagnement du client jusqu'à la validation du premier lot industriel</li>
+            </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/scale-up-industrial.jpg" alt="Scale-up industriel">
+            </div>
         </div>
     </div>
 </div>
+
 <div id="modal-6" class="modal-overlay">
     <div class="modal">
         <div class="modal-head">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h2>[Titre du projet 6]</h2>
-            <div class="modal-cat"><i class="fas fa-shield-alt"></i> Qualité</div>
-            <p style="color:rgba(255,255,255,0.85);">[Sous-titre / résumé en une ligne]</p>
+            <h2>Dégradation Electro-Fenton de la tétracycline</h2>
+            <div class="modal-cat"><i class="fas fa-microscope"></i> R&amp;D — Projet de fin d'études</div>
+            <p style="color:rgba(255,255,255,0.85);">SIPHAT — Février à Mai 2016</p>
         </div>
         <div class="modal-body">
             <h3>Contexte</h3>
-            <p style="margin-bottom:24px;color:var(--ink-soft);">[Décrire le contexte du projet, la problématique et les objectifs.]</p>
-            <h3>Résultats obtenus</h3>
-            <ul><li>[Résultat quantifié 1]</li><li>[Résultat quantifié 2]</li></ul>
+            <p style="margin-bottom:24px;color:var(--ink-soft);">Étude de la dégradation de l'hydrochlorure de tétracycline par le procédé d'oxydation avancée Electro-Fenton, dans le cadre du projet de fin d'études d'ingénieur.</p>
+            <h3>Travaux réalisés</h3>
+            <ul>
+                <li>Analyse de la cinétique de dégradation du composé</li>
+                <li>Étude de l'influence des paramètres opératoires sur l'efficacité du traitement</li>
+                <li>Mesures de la demande chimique en oxygène (DCO) et évaluation de la minéralisation</li>
+                <li>Interprétation des résultats et soutenance devant jury</li>
+            </ul>
+            <div class="modal-gallery">
+                <img src="images/projects/electro-fenton-lab.jpg" alt="Electro-Fenton lab">
+            </div>
         </div>
     </div>
 </div>
 
 <footer class="pf-footer" id="contact">
-    <div class="logo">[Prénom Nom]</div>
-    <p>Passionnée par les défis techniques et l'innovation en chimie industrielle, toujours à la recherche de nouveaux projets stimulants.</p>
+    <div class="logo">Hajer Chakroun</div>
+    <p>Ouverte aux opportunités et collaborations en formulation cosmétique, R&amp;D et développement technico-commercial.</p>
     <div class="foot-links">
-        <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> prenom.nom@email.com</a>
-        <a href="tel:+21600000000"><i class="fas fa-phone"></i> (+216) 00 000 000</a>
-        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:chakrounhajer01@gmail.com"><i class="fas fa-envelope"></i> chakrounhajer01@gmail.com</a>
+        <a href="tel:+21699113667"><i class="fas fa-phone"></i> (+216) 99 113 667</a>
         <a href="index.html"><i class="fas fa-user-tie"></i> Mon CV</a>
     </div>
     <div class="copy">
-        <p>© <span id="yr"></span> [Prénom Nom] – Ingénieure Chimiste. Tous droits réservés.</p>
+        <p>© <span id="yr"></span> Hajer Chakroun – Ingénieure Chimiste, Formulation Cosmétique &amp; R&amp;D. Tous droits réservés.</p>
         <p style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
     </div>
 </footer>
-
-<div class="draft-note"><i class="fas fa-pen"></i> Draft — les champs entre [crochets] seront remplacés par les vraies infos.</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
