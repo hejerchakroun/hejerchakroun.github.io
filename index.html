@@ -1,1 +1,653 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Prénom Nom] — Ingénieure Chimiste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ============ TOKENS ============ */
+:root{
+    --navy:#0b1e33;
+    --navy-2:#123a5e;
+    --turquoise:#17a6a0;
+    --turquoise-light:#5fd6ce;
+    --offwhite:#f7f5ef;
+    --paper:#ffffff;
+    --green:#5b8c6e;
+    --ink:#132330;
+    --ink-soft:#5b6b78;
+    --line: rgba(11,30,51,0.09);
+    --shadow: 0 20px 50px -20px rgba(11,30,51,0.18);
+    --shadow-sm: 0 8px 20px -10px rgba(11,30,51,0.15);
+    --radius: 22px;
+    --ease: cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--offwhite);
+    line-height:1.65;
+    overflow-x:hidden;
+}
+::selection{background:var(--turquoise-light);color:var(--navy);}
+h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
+.mono{font-family:'IBM Plex Mono',monospace;}
 
+/* ============ HERO ============ */
+.hero{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(23,166,160,0.25), transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(91,140,110,0.18), transparent 40%),
+        linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--offwhite);
+    padding:60px 20px;
+    overflow:hidden;
+}
+/* Signature: hexagonal molecule lattice */
+.hex-field{
+    position:absolute; inset:0; z-index:0; opacity:0.5;
+}
+.hex-field svg{width:100%;height:100%;}
+.hex-field .bond{
+    stroke:rgba(95,214,206,0.35);
+    stroke-width:1.4;
+    fill:none;
+}
+.hex-field .node{
+    fill:rgba(95,214,206,0.55);
+}
+.hex-field .node.alt{ fill:rgba(91,140,110,0.55); }
+@keyframes drift{
+    0%,100%{ transform:translate(0,0); }
+    50%{ transform:translate(-14px,10px); }
+}
+.hex-field .layer{ animation:drift 22s var(--ease) infinite; transform-origin:center; }
+.hex-field .layer.slow{ animation-duration:34s; animation-direction:reverse; }
+
+.hero-inner{ position:relative; z-index:2; max-width:900px; }
+
+.eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--turquoise-light);
+    background:rgba(95,214,206,0.08);
+    border:1px solid rgba(95,214,206,0.3);
+    padding:8px 18px; border-radius:40px;
+    margin-bottom:28px;
+}
+.eyebrow .dot{ width:6px;height:6px;border-radius:50%;background:var(--green); box-shadow:0 0 0 4px rgba(91,140,110,0.25); }
+
+.avatar-ring{
+    width:150px;height:150px; border-radius:50%; margin:0 auto 30px;
+    display:flex; align-items:center; justify-content:center;
+    background: conic-gradient(from 220deg, var(--turquoise), var(--green), var(--turquoise));
+    padding:4px;
+}
+.avatar-ring .avatar{
+    width:100%;height:100%;border-radius:50%;
+    background: var(--navy-2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:2.6rem; font-weight:500;
+    color:var(--offwhite);
+    letter-spacing:0.02em;
+}
+
+.hero h1{
+    font-size:clamp(2.4rem, 5.2vw, 4.2rem);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+    color:#fff;
+}
+.hero h1 em{ font-style:italic; color:var(--turquoise-light); font-weight:300; }
+
+.hero .role{
+    font-size:clamp(1.1rem,2vw,1.4rem);
+    color:rgba(247,245,239,0.85);
+    font-weight:400;
+    margin-bottom:8px;
+}
+.hero .role .sep{ color:var(--green); margin:0 10px; }
+
+.hero .baseline{
+    max-width:620px; margin:26px auto 0;
+    color:rgba(247,245,239,0.72);
+    font-size:1.05rem;
+}
+
+.contact-row{
+    display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+    margin:36px 0 40px;
+}
+.contact-row a, .contact-row span{
+    display:flex; align-items:center; gap:9px;
+    color:#fff; text-decoration:none; font-size:0.95rem;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    padding:10px 20px; border-radius:40px;
+    transition:all .3s var(--ease);
+}
+.contact-row a:hover{ background:rgba(95,214,206,0.16); border-color:var(--turquoise-light); transform:translateY(-2px); }
+.contact-row i{ color:var(--turquoise-light); }
+
+.hero-cta{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+.btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 34px; border-radius:40px; text-decoration:none;
+    font-weight:600; font-size:1rem; transition:all .3s var(--ease);
+    border:none; cursor:pointer;
+}
+.btn-primary{ background:var(--turquoise); color:var(--navy); box-shadow:0 14px 30px -10px rgba(23,166,160,0.55); }
+.btn-primary:hover{ transform:translateY(-3px); background:var(--turquoise-light); }
+.btn-ghost{ background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,0.35); }
+.btn-ghost:hover{ border-color:var(--turquoise-light); background:rgba(95,214,206,0.08); }
+
+.scroll-cue{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    color:rgba(255,255,255,0.6); font-size:0.78rem; letter-spacing:0.12em;
+    text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+}
+.scroll-cue .line{ width:1px; height:34px; background:linear-gradient(var(--turquoise-light),transparent); animation:pulse-line 2s infinite; }
+@keyframes pulse-line{ 0%,100%{opacity:.3;} 50%{opacity:1;} }
+
+/* ============ LAYOUT ============ */
+.wrap{ max-width:1360px; margin:0 auto; padding:0 24px; }
+.grid-layout{ display:flex; gap:32px; padding:70px 0; align-items:flex-start; }
+.col-side{ width:32%; position:sticky; top:24px; }
+.col-main{ width:68%; }
+
+.panel{
+    background:var(--paper);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);
+    padding:34px;
+    margin-bottom:28px;
+    opacity:0; transform:translateY(24px);
+    transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.panel.visible{ opacity:1; transform:translateY(0); }
+.panel-title{
+    font-size:1.55rem; font-weight:500; color:var(--navy);
+    display:flex; align-items:center; gap:12px; margin-bottom:26px;
+    padding-bottom:16px; border-bottom:2px solid var(--offwhite);
+}
+.panel-title .num{ font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--turquoise); background:rgba(23,166,160,0.1); padding:4px 9px; border-radius:6px; }
+.panel-title i{ color:var(--turquoise); font-size:1.3rem; }
+
+/* ---- Sidebar element tiles (periodic-table motif) ---- */
+.side-block-title{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--ink-soft); margin:26px 0 14px;
+}
+.side-block-title:first-child{ margin-top:0; }
+.tile-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.tile{
+    aspect-ratio:1; border-radius:12px; background:var(--offwhite);
+    border:1px solid var(--line);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:6px; transition:all .3s var(--ease); cursor:default;
+}
+.tile:hover{ background:var(--navy); transform:translateY(-4px); box-shadow:var(--shadow-sm); }
+.tile .sym{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:1.05rem; color:var(--turquoise); }
+.tile:hover .sym{ color:var(--turquoise-light); }
+.tile .lbl{ font-size:0.62rem; color:var(--ink-soft); margin-top:4px; line-height:1.2; }
+.tile:hover .lbl{ color:rgba(247,245,239,0.85); }
+
+.edu-item{
+    padding:16px 0; border-bottom:1px dashed var(--line);
+}
+.edu-item:last-child{ border-bottom:none; padding-bottom:0; }
+.edu-item .deg{ font-weight:600; color:var(--navy); font-size:0.98rem; margin-bottom:4px; }
+.edu-item .school{ color:var(--ink-soft); font-size:0.88rem; display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+.edu-item .yr{
+    font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--turquoise);
+    background:rgba(23,166,160,0.09); padding:3px 10px; border-radius:20px; display:inline-block;
+}
+
+.lang-row{ display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px dashed var(--line); }
+.lang-row:last-child{ border-bottom:none; }
+.lang-row .name{ font-weight:600; color:var(--navy); font-size:0.92rem; }
+.lang-bar{ width:90px; height:5px; background:var(--offwhite); border-radius:10px; overflow:hidden; }
+.lang-bar span{ display:block; height:100%; background:linear-gradient(90deg,var(--turquoise),var(--green)); }
+
+/* Certifications */
+.cert-item{
+    display:flex; gap:14px; align-items:flex-start; padding:14px 0;
+    border-bottom:1px dashed var(--line);
+}
+.cert-item:last-child{ border-bottom:none; }
+.cert-icon{
+    width:38px;height:38px; border-radius:10px; flex-shrink:0;
+    background:linear-gradient(135deg,var(--turquoise),var(--green));
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.95rem;
+}
+.cert-info .t{ font-weight:600; color:var(--navy); font-size:0.88rem; line-height:1.4; }
+.cert-info .d{ font-size:0.76rem; color:var(--ink-soft); margin-top:3px; font-family:'IBM Plex Mono',monospace; }
+
+/* ---- Main content ---- */
+.lead-quote{
+    background:linear-gradient(135deg, rgba(23,166,160,0.06), rgba(91,140,110,0.05));
+    border-left:3px solid var(--turquoise);
+    border-radius:0 16px 16px 0;
+    padding:26px 30px; margin-bottom:30px;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:1.2rem; color:var(--navy); line-height:1.55;
+}
+.profile-text p{ margin-bottom:16px; color:var(--ink); }
+.profile-text p:last-child{ margin-bottom:0; }
+.profile-text strong{ color:var(--turquoise); font-weight:600; }
+
+.strength-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px;
+}
+.strength{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:18px; border-radius:14px; border:1px solid var(--line); background:var(--offwhite);
+    transition:all .3s var(--ease);
+}
+.strength:hover{ border-color:var(--turquoise); transform:translateY(-3px); box-shadow:var(--shadow-sm); background:var(--paper); }
+.strength .ic{
+    width:42px;height:42px; border-radius:11px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.1rem;
+}
+.strength h4{ font-size:0.98rem; color:var(--navy); margin-bottom:4px; font-weight:600; }
+.strength p{ font-size:0.85rem; color:var(--ink-soft); margin:0; }
+
+/* Timeline / experience */
+.timeline{ position:relative; margin-top:10px; }
+.tl-item{ position:relative; padding-left:30px; padding-bottom:44px; border-left:2px solid var(--offwhite); }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-item::before{
+    content:''; position:absolute; left:-7px; top:2px; width:12px;height:12px; border-radius:50%;
+    background:var(--turquoise); border:3px solid var(--paper); box-shadow:0 0 0 2px var(--turquoise);
+}
+.tl-item.current::before{ background:var(--green); box-shadow:0 0 0 2px var(--green); }
+.tl-role{ font-size:1.25rem; font-weight:600; color:var(--navy); margin-bottom:6px; }
+.tl-org{ display:flex; align-items:center; gap:10px; color:var(--ink-soft); font-weight:500; margin-bottom:10px; }
+.tl-org i{ color:var(--turquoise); }
+.tl-date{
+    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--turquoise);
+    background:rgba(23,166,160,0.09); padding:4px 12px; border-radius:20px; display:inline-block; margin-bottom:14px;
+}
+.tl-item h5{ font-size:0.92rem; color:var(--green); margin:16px 0 8px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; display:flex; align-items:center; gap:8px;}
+.tl-item ul{ padding-left:20px; }
+.tl-item li{ margin-bottom:8px; color:var(--ink); font-size:0.95rem; position:relative; }
+.tl-item li::marker{ color:var(--turquoise); }
+
+/* Projects preview */
+.proj-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:22px; margin-top:24px; }
+.proj-card{
+    background:var(--offwhite); border-radius:16px; overflow:hidden; border:1px solid var(--line);
+    transition:all .35s var(--ease);
+}
+.proj-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--turquoise); }
+.proj-top{
+    height:130px; display:flex; align-items:center; justify-content:center; position:relative;
+    background:linear-gradient(135deg, var(--navy), var(--navy-2));
+}
+.proj-top i{ font-size:2.2rem; color:var(--turquoise-light); }
+.proj-tag-abs{
+    position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.12);
+    color:#fff; font-size:0.7rem; padding:5px 12px; border-radius:20px; backdrop-filter:blur(6px);
+    font-family:'IBM Plex Mono',monospace; border:1px solid rgba(255,255,255,0.2);
+}
+.proj-body{ padding:22px; }
+.proj-body h3{ font-size:1.08rem; color:var(--navy); margin-bottom:10px; font-weight:600; }
+.proj-body p{ font-size:0.88rem; color:var(--ink-soft); margin-bottom:16px; }
+.chip-row{ display:flex; flex-wrap:wrap; gap:7px; }
+.chip{
+    font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--turquoise);
+    background:rgba(23,166,160,0.08); border:1px solid rgba(23,166,160,0.2);
+    padding:4px 11px; border-radius:20px;
+}
+
+.see-all{ text-align:center; margin-top:40px; padding-top:30px; border-top:1px dashed var(--line); }
+.link-btn{
+    display:inline-flex; align-items:center; gap:10px; color:var(--navy); font-weight:600;
+    text-decoration:none; padding:14px 30px; border-radius:40px; border:1.5px solid var(--navy);
+    transition:all .3s var(--ease);
+}
+.link-btn:hover{ background:var(--navy); color:#fff; }
+
+/* ============ FOOTER ============ */
+footer{
+    background:linear-gradient(160deg, var(--navy), var(--navy-2));
+    color:rgba(247,245,239,0.85);
+    padding:80px 20px 40px; text-align:center; position:relative; margin-top:40px;
+}
+footer::before{ content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--turquoise),var(--green),transparent); }
+footer h2{ color:#fff; font-size:2rem; font-weight:500; margin-bottom:16px; }
+footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
+.foot-links{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:40px; }
+.foot-links a{
+    color:#fff; text-decoration:none; display:flex; align-items:center; gap:9px;
+    padding:12px 24px; border-radius:40px; background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12); font-size:0.92rem; transition:all .3s var(--ease);
+}
+.foot-links a:hover{ background:rgba(95,214,206,0.15); border-color:var(--turquoise-light); transform:translateY(-3px); }
+.foot-links i{ color:var(--turquoise-light); }
+.copy{ font-size:0.8rem; color:rgba(247,245,239,0.45); border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; }
+
+/* placeholder note badge */
+.draft-note{
+    position:fixed; bottom:20px; right:20px; z-index:50;
+    background:var(--navy); color:#fff; font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem; padding:10px 16px; border-radius:10px; opacity:0.85;
+    box-shadow:var(--shadow-sm); max-width:220px; line-height:1.5;
+    border:1px solid var(--turquoise);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+    .grid-layout{ flex-direction:column; }
+    .col-side, .col-main{ width:100%; position:static; }
+    .strength-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:600px){
+    .hero h1{ font-size:2.1rem; }
+    .panel{ padding:24px; }
+    .draft-note{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hex-field">
+        <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+            <g class="layer">
+                <polygon class="bond" points="200,120 260,155 260,225 200,260 140,225 140,155"/>
+                <polygon class="bond" points="320,60 380,95 380,165 320,200 260,165 260,95"/>
+                <polygon class="bond" points="1150,700 1210,735 1210,805 1150,840 1090,805 1090,735"/>
+                <polygon class="bond" points="1030,640 1090,675 1090,745 1030,780 970,745 970,675"/>
+                <polygon class="bond" points="1250,560 1310,595 1310,665 1250,700 1190,665 1190,595"/>
+                <circle class="node" cx="200" cy="120" r="4"/>
+                <circle class="node alt" cx="260" cy="225" r="4"/>
+                <circle class="node" cx="380" cy="95" r="4"/>
+                <circle class="node alt" cx="1150" cy="700" r="4"/>
+                <circle class="node" cx="1090" cy="745" r="4"/>
+                <circle class="node alt" cx="1310" cy="595" r="4"/>
+            </g>
+            <g class="layer slow">
+                <polygon class="bond" points="80,500 140,535 140,605 80,640 20,605 20,535"/>
+                <polygon class="bond" points="1300,150 1360,185 1360,255 1300,290 1240,255 1240,185"/>
+                <polygon class="bond" points="700,780 760,815 760,885 700,920 640,885 640,815"/>
+                <circle class="node" cx="80" cy="500" r="4"/>
+                <circle class="node alt" cx="1360" cy="255" r="4"/>
+                <circle class="node" cx="700" cy="780" r="4"/>
+            </g>
+        </svg>
+    </div>
+
+    <div class="hero-inner">
+        <div class="eyebrow"><span class="dot"></span> Génie Chimique &amp; Procédés</div>
+
+        <div class="avatar-ring"><div class="avatar">PN</div></div>
+
+        <h1>[Prénom] <em>[Nom]</em></h1>
+        <p class="role">Ingénieure Chimiste <span class="sep">·</span> Procédés &amp; Contrôle Qualité</p>
+        <p class="baseline">[Une phrase d'introduction : par ex. « Ingénieure diplômée spécialisée dans l'optimisation des procédés industriels, le contrôle qualité et la R&D de formulations. » — à remplacer avec son vrai profil]</p>
+
+        <div class="contact-row">
+            <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> prenom.nom@email.com</a>
+            <a href="tel:+21600000000"><i class="fas fa-phone"></i> (+216) 00 000 000</a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i> Profil LinkedIn</a>
+            <span><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</span>
+        </div>
+
+        <div class="hero-cta">
+            <a href="#cv" class="btn btn-primary"><i class="fas fa-file-alt"></i> Voir le CV</a>
+            <a href="portfolio.html" class="btn btn-ghost"><i class="fas fa-flask"></i> Portfolio complet</a>
+        </div>
+    </div>
+
+    <a href="#cv" class="scroll-cue"><span>Défiler</span><span class="line"></span></a>
+</section>
+
+<!-- MAIN -->
+<div class="wrap" id="cv">
+<div class="grid-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="col-side">
+        <div class="panel visible">
+            <h3 class="panel-title"><i class="fas fa-vial"></i> Compétences</h3>
+
+            <div class="side-block-title">Procédés &amp; Production</div>
+            <div class="tile-grid">
+                <div class="tile"><span class="sym">Pc</span><span class="lbl">Procédés chimiques</span></div>
+                <div class="tile"><span class="sym">Op</span><span class="lbl">Optimisation process</span></div>
+                <div class="tile"><span class="sym">Sc</span><span class="lbl">Scale-up</span></div>
+            </div>
+
+            <div class="side-block-title">Laboratoire &amp; Analyse</div>
+            <div class="tile-grid">
+                <div class="tile"><span class="sym">Hp</span><span class="lbl">HPLC / GC</span></div>
+                <div class="tile"><span class="sym">Sp</span><span class="lbl">Spectroscopie</span></div>
+                <div class="tile"><span class="sym">Ti</span><span class="lbl">Titrage</span></div>
+            </div>
+
+            <div class="side-block-title">Qualité &amp; Normes</div>
+            <div class="tile-grid">
+                <div class="tile"><span class="sym">Iso</span><span class="lbl">ISO 9001</span></div>
+                <div class="tile"><span class="sym">Hs</span><span class="lbl">HSE</span></div>
+                <div class="tile"><span class="sym">Cq</span><span class="lbl">Contrôle qualité</span></div>
+            </div>
+        </div>
+
+        <div class="panel visible">
+            <h3 class="panel-title"><i class="fas fa-graduation-cap"></i> Formation</h3>
+            <div class="edu-item">
+                <div class="deg">[Diplôme d'Ingénieur / Master en Génie Chimique]</div>
+                <div class="school"><i class="fas fa-university"></i> [Nom de l'école / université]</div>
+                <span class="yr">20XX – 20XX</span>
+            </div>
+            <div class="edu-item">
+                <div class="deg">[Licence / Classes préparatoires]</div>
+                <div class="school"><i class="fas fa-university"></i> [Établissement]</div>
+                <span class="yr">20XX – 20XX</span>
+            </div>
+            <div class="edu-item">
+                <div class="deg">Baccalauréat — [Mention]</div>
+                <div class="school"><i class="fas fa-school"></i> [Lycée]</div>
+                <span class="yr">20XX</span>
+            </div>
+        </div>
+
+        <div class="panel visible">
+            <h3 class="panel-title"><i class="fas fa-language"></i> Langues</h3>
+            <div class="lang-row"><span class="name">Français</span><div class="lang-bar"><span style="width:100%"></span></div></div>
+            <div class="lang-row"><span class="name">Arabe</span><div class="lang-bar"><span style="width:100%"></span></div></div>
+            <div class="lang-row"><span class="name">Anglais</span><div class="lang-bar"><span style="width:80%"></span></div></div>
+        </div>
+
+        <div class="panel visible">
+            <h3 class="panel-title"><i class="fas fa-certificate"></i> Certifications</h3>
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                    <div class="t">[Nom de la certification]</div>
+                    <div class="d">Obtenue : [Mois Année]</div>
+                </div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                    <div class="t">[Nom de la certification]</div>
+                    <div class="d">Obtenue : [Mois Année]</div>
+                </div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                    <div class="t">[Nom de la certification]</div>
+                    <div class="d">Obtenue : [Mois Année]</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="col-main">
+
+        <section class="panel" id="profil">
+            <h3 class="panel-title"><i class="fas fa-user-tie"></i> Profil professionnel</h3>
+            <div class="lead-quote">« [Citation ou phrase d'accroche décrivant son approche professionnelle — à personnaliser] »</div>
+            <div class="profile-text">
+                <p>Titulaire d'un <strong>diplôme d'ingénieur en génie chimique</strong>, [elle possède X années d'expérience] dans [domaine : industrie pharmaceutique / agroalimentaire / pétrochimie / cosmétique — à préciser].</p>
+                <p>Spécialisée en <strong>contrôle qualité, optimisation des procédés</strong> et [autre spécialité], avec une approche rigoureuse orientée résultats et amélioration continue.</p>
+            </div>
+
+            <h3 style="margin-top:34px;margin-bottom:6px;font-size:1.05rem;color:var(--navy);font-family:'Fraunces',serif;">Points forts</h3>
+            <div class="strength-grid">
+                <div class="strength">
+                    <div class="ic" style="background:linear-gradient(135deg,var(--turquoise),#0d7d78);"><i class="fas fa-flask"></i></div>
+                    <div><h4>Chimie analytique</h4><p>Analyses, essais et validation en laboratoire</p></div>
+                </div>
+                <div class="strength">
+                    <div class="ic" style="background:linear-gradient(135deg,var(--green),#3f6b52);"><i class="fas fa-industry"></i></div>
+                    <div><h4>Procédés industriels</h4><p>Optimisation, scale-up, suivi de production</p></div>
+                </div>
+                <div class="strength">
+                    <div class="ic" style="background:linear-gradient(135deg,var(--navy-2),var(--navy));"><i class="fas fa-shield-alt"></i></div>
+                    <div><h4>Qualité &amp; HSE</h4><p>Normes ISO, sécurité, conformité réglementaire</p></div>
+                </div>
+                <div class="strength">
+                    <div class="ic" style="background:linear-gradient(135deg,#4a9d95,var(--turquoise));"><i class="fas fa-chart-line"></i></div>
+                    <div><h4>Amélioration continue</h4><p>Réduction des coûts, gains de rendement</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel" id="experience">
+            <h3 class="panel-title"><i class="fas fa-briefcase"></i> Expérience professionnelle</h3>
+            <div class="timeline">
+                <div class="tl-item current">
+                    <div class="tl-role">[Intitulé du poste]</div>
+                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
+                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – Présent</span>
+                    <h5><i class="fas fa-vial"></i> Missions principales</h5>
+                    <ul>
+                        <li>[Mission ou réalisation clé n°1]</li>
+                        <li>[Mission ou réalisation clé n°2]</li>
+                        <li>[Mission ou réalisation clé n°3]</li>
+                    </ul>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-role">[Intitulé du poste précédent]</div>
+                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
+                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – [MM/AAAA]</span>
+                    <ul>
+                        <li>[Mission ou réalisation clé n°1]</li>
+                        <li>[Mission ou réalisation clé n°2]</li>
+                    </ul>
+                </div>
+                <div class="tl-item">
+                    <div class="tl-role">[Stage / premier poste]</div>
+                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
+                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – [MM/AAAA]</span>
+                    <ul>
+                        <li>[Mission ou réalisation clé n°1]</li>
+                        <li>[Mission ou réalisation clé n°2]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel" id="projets">
+            <h3 class="panel-title"><i class="fas fa-star"></i> Projets significatifs</h3>
+            <p style="color:var(--ink-soft);margin-bottom:6px;">Aperçu des projets les plus marquants :</p>
+            <div class="proj-grid">
+                <div class="proj-card">
+                    <div class="proj-top"><i class="fas fa-flask"></i><span class="proj-tag-abs">R&amp;D</span></div>
+                    <div class="proj-body">
+                        <h3>[Titre du projet 1]</h3>
+                        <p>[Courte description du projet — formulation, procédé, optimisation, etc.]</p>
+                        <div class="chip-row"><span class="chip">Chimie</span><span class="chip">Analyse</span><span class="chip">Qualité</span></div>
+                    </div>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top"><i class="fas fa-industry"></i><span class="proj-tag-abs">Procédé</span></div>
+                    <div class="proj-body">
+                        <h3>[Titre du projet 2]</h3>
+                        <p>[Courte description du projet — amélioration de process, réduction de coûts, etc.]</p>
+                        <div class="chip-row"><span class="chip">Production</span><span class="chip">Optimisation</span></div>
+                    </div>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top"><i class="fas fa-shield-alt"></i><span class="proj-tag-abs">Qualité</span></div>
+                    <div class="proj-body">
+                        <h3>[Titre du projet 3]</h3>
+                        <p>[Courte description du projet — certification, mise en conformité, audit, etc.]</p>
+                        <div class="chip-row"><span class="chip">ISO</span><span class="chip">HSE</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="see-all">
+                <a href="portfolio.html" class="link-btn"><i class="fas fa-external-link-alt"></i> Voir tous les projets (Portfolio complet)</a>
+            </div>
+        </section>
+
+    </main>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <h2>Me contacter</h2>
+    <p>Ouverte aux opportunités professionnelles en génie chimique, procédés industriels et contrôle qualité.</p>
+    <div class="foot-links">
+        <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="tel:+21600000000"><i class="fas fa-phone"></i> Téléphone</a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="copy">
+        <p>© 2025 [Prénom Nom] – Ingénieure Chimiste. Tous droits réservés.</p>
+        <p style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
+    </div>
+</footer>
+
+<div class="draft-note"><i class="fas fa-pen"></i> Draft — les champs entre [crochets] seront remplacés par les vraies infos du CV.</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const panels = document.querySelectorAll('.panel');
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -80px 0px' });
+    panels.forEach(p => io.observe(p));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = a.getAttribute('href');
+            if(id === '#') return;
+            const t = document.querySelector(id);
+            if(t){
+                const offset = 80;
+                const top = t.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: id === '#home' ? 0 : top, behavior:'smooth' });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
