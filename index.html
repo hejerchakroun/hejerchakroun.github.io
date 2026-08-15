@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Prénom Nom] — Ingénieure Chimiste</title>
+<title>Hajer Chakroun — Ingénieure Chimiste | Formulation Cosmétique &amp; R&amp;D</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -56,24 +56,12 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
     padding:60px 20px;
     overflow:hidden;
 }
-/* Signature: hexagonal molecule lattice */
-.hex-field{
-    position:absolute; inset:0; z-index:0; opacity:0.5;
-}
+.hex-field{ position:absolute; inset:0; z-index:0; opacity:0.5; }
 .hex-field svg{width:100%;height:100%;}
-.hex-field .bond{
-    stroke:rgba(95,214,206,0.35);
-    stroke-width:1.4;
-    fill:none;
-}
-.hex-field .node{
-    fill:rgba(95,214,206,0.55);
-}
+.hex-field .bond{ stroke:rgba(95,214,206,0.35); stroke-width:1.4; fill:none; }
+.hex-field .node{ fill:rgba(95,214,206,0.55); }
 .hex-field .node.alt{ fill:rgba(91,140,110,0.55); }
-@keyframes drift{
-    0%,100%{ transform:translate(0,0); }
-    50%{ transform:translate(-14px,10px); }
-}
+@keyframes drift{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(-14px,10px); } }
 .hex-field .layer{ animation:drift 22s var(--ease) infinite; transform-origin:center; }
 .hex-field .layer.slow{ animation-duration:34s; animation-direction:reverse; }
 
@@ -99,12 +87,11 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 }
 .avatar-ring .avatar{
     width:100%;height:100%;border-radius:50%;
+    overflow:hidden;
     background: var(--navy-2);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces',serif; font-size:2.6rem; font-weight:500;
-    color:var(--offwhite);
-    letter-spacing:0.02em;
 }
+.avatar-ring .avatar img{ width:100%; height:100%; object-fit:cover; }
 
 .hero h1{
     font-size:clamp(2.4rem, 5.2vw, 4.2rem);
@@ -116,7 +103,7 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 .hero h1 em{ font-style:italic; color:var(--turquoise-light); font-weight:300; }
 
 .hero .role{
-    font-size:clamp(1.1rem,2vw,1.4rem);
+    font-size:clamp(1.05rem,1.9vw,1.3rem);
     color:rgba(247,245,239,0.85);
     font-weight:400;
     margin-bottom:8px;
@@ -124,7 +111,7 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 .hero .role .sep{ color:var(--green); margin:0 10px; }
 
 .hero .baseline{
-    max-width:620px; margin:26px auto 0;
+    max-width:660px; margin:26px auto 0;
     color:rgba(247,245,239,0.72);
     font-size:1.05rem;
 }
@@ -187,10 +174,9 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
     display:flex; align-items:center; gap:12px; margin-bottom:26px;
     padding-bottom:16px; border-bottom:2px solid var(--offwhite);
 }
-.panel-title .num{ font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--turquoise); background:rgba(23,166,160,0.1); padding:4px 9px; border-radius:6px; }
 .panel-title i{ color:var(--turquoise); font-size:1.3rem; }
 
-/* ---- Sidebar element tiles (periodic-table motif) ---- */
+/* ---- Sidebar element tiles ---- */
 .side-block-title{
     font-family:'IBM Plex Mono',monospace; font-size:0.78rem; text-transform:uppercase;
     letter-spacing:0.1em; color:var(--ink-soft); margin:26px 0 14px;
@@ -209,9 +195,7 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 .tile .lbl{ font-size:0.62rem; color:var(--ink-soft); margin-top:4px; line-height:1.2; }
 .tile:hover .lbl{ color:rgba(247,245,239,0.85); }
 
-.edu-item{
-    padding:16px 0; border-bottom:1px dashed var(--line);
-}
+.edu-item{ padding:16px 0; border-bottom:1px dashed var(--line); }
 .edu-item:last-child{ border-bottom:none; padding-bottom:0; }
 .edu-item .deg{ font-weight:600; color:var(--navy); font-size:0.98rem; margin-bottom:4px; }
 .edu-item .school{ color:var(--ink-soft); font-size:0.88rem; display:flex; align-items:center; gap:7px; margin-bottom:6px; }
@@ -226,19 +210,14 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 .lang-bar{ width:90px; height:5px; background:var(--offwhite); border-radius:10px; overflow:hidden; }
 .lang-bar span{ display:block; height:100%; background:linear-gradient(90deg,var(--turquoise),var(--green)); }
 
-/* Certifications */
-.cert-item{
-    display:flex; gap:14px; align-items:flex-start; padding:14px 0;
-    border-bottom:1px dashed var(--line);
+/* Valeur ajoutée — tag cloud */
+.tag-cloud{ display:flex; flex-wrap:wrap; gap:9px; }
+.tag-cloud .vtag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--navy);
+    background:var(--offwhite); border:1px solid var(--line);
+    padding:8px 14px; border-radius:20px; transition:all .3s var(--ease);
 }
-.cert-item:last-child{ border-bottom:none; }
-.cert-icon{
-    width:38px;height:38px; border-radius:10px; flex-shrink:0;
-    background:linear-gradient(135deg,var(--turquoise),var(--green));
-    display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.95rem;
-}
-.cert-info .t{ font-weight:600; color:var(--navy); font-size:0.88rem; line-height:1.4; }
-.cert-info .d{ font-size:0.76rem; color:var(--ink-soft); margin-top:3px; font-family:'IBM Plex Mono',monospace; }
+.tag-cloud .vtag:hover{ background:var(--navy); color:var(--turquoise-light); border-color:var(--navy); transform:translateY(-2px); }
 
 /* ---- Main content ---- */
 .lead-quote{
@@ -247,15 +226,13 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
     border-radius:0 16px 16px 0;
     padding:26px 30px; margin-bottom:30px;
     font-family:'Fraunces',serif; font-style:italic; font-weight:400;
-    font-size:1.2rem; color:var(--navy); line-height:1.55;
+    font-size:1.15rem; color:var(--navy); line-height:1.55;
 }
 .profile-text p{ margin-bottom:16px; color:var(--ink); }
 .profile-text p:last-child{ margin-bottom:0; }
 .profile-text strong{ color:var(--turquoise); font-weight:600; }
 
-.strength-grid{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px;
-}
+.strength-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:24px; }
 .strength{
     display:flex; gap:14px; align-items:flex-start;
     padding:18px; border-radius:14px; border:1px solid var(--line); background:var(--offwhite);
@@ -279,13 +256,17 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 }
 .tl-item.current::before{ background:var(--green); box-shadow:0 0 0 2px var(--green); }
 .tl-role{ font-size:1.25rem; font-weight:600; color:var(--navy); margin-bottom:6px; }
-.tl-org{ display:flex; align-items:center; gap:10px; color:var(--ink-soft); font-weight:500; margin-bottom:10px; }
-.tl-org i{ color:var(--turquoise); }
+.tl-org{ display:flex; align-items:center; gap:12px; color:var(--ink-soft); font-weight:500; margin-bottom:10px; }
+.tl-org .logo{
+    width:32px; height:32px; border-radius:8px; background:var(--paper); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;
+}
+.tl-org .logo img{ width:100%; height:100%; object-fit:contain; }
 .tl-date{
     font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--turquoise);
     background:rgba(23,166,160,0.09); padding:4px 12px; border-radius:20px; display:inline-block; margin-bottom:14px;
 }
-.tl-item h5{ font-size:0.92rem; color:var(--green); margin:16px 0 8px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; display:flex; align-items:center; gap:8px;}
+.tl-item h5{ font-size:0.9rem; color:var(--green); margin:18px 0 8px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; display:flex; align-items:center; gap:8px;}
 .tl-item ul{ padding-left:20px; }
 .tl-item li{ margin-bottom:8px; color:var(--ink); font-size:0.95rem; position:relative; }
 .tl-item li::marker{ color:var(--turquoise); }
@@ -298,17 +279,18 @@ h1,h2,h3,.font-display{font-family:'Fraunces',serif;}
 }
 .proj-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:var(--turquoise); }
 .proj-top{
-    height:130px; display:flex; align-items:center; justify-content:center; position:relative;
+    height:140px; position:relative; overflow:hidden;
     background:linear-gradient(135deg, var(--navy), var(--navy-2));
 }
-.proj-top i{ font-size:2.2rem; color:var(--turquoise-light); }
+.proj-top img{ width:100%; height:100%; object-fit:cover; opacity:0.88; transition:transform .6s var(--ease); }
+.proj-card:hover .proj-top img{ transform:scale(1.08); }
 .proj-tag-abs{
-    position:absolute; top:12px; right:12px; background:rgba(255,255,255,0.12);
+    position:absolute; top:12px; right:12px; background:rgba(11,30,51,0.55);
     color:#fff; font-size:0.7rem; padding:5px 12px; border-radius:20px; backdrop-filter:blur(6px);
-    font-family:'IBM Plex Mono',monospace; border:1px solid rgba(255,255,255,0.2);
+    font-family:'IBM Plex Mono',monospace; border:1px solid rgba(255,255,255,0.25);
 }
 .proj-body{ padding:22px; }
-.proj-body h3{ font-size:1.08rem; color:var(--navy); margin-bottom:10px; font-weight:600; }
+.proj-body h3{ font-size:1.06rem; color:var(--navy); margin-bottom:10px; font-weight:600; }
 .proj-body p{ font-size:0.88rem; color:var(--ink-soft); margin-bottom:16px; }
 .chip-row{ display:flex; flex-wrap:wrap; gap:7px; }
 .chip{
@@ -344,15 +326,6 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
 .foot-links i{ color:var(--turquoise-light); }
 .copy{ font-size:0.8rem; color:rgba(247,245,239,0.45); border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; }
 
-/* placeholder note badge */
-.draft-note{
-    position:fixed; bottom:20px; right:20px; z-index:50;
-    background:var(--navy); color:#fff; font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem; padding:10px 16px; border-radius:10px; opacity:0.85;
-    box-shadow:var(--shadow-sm); max-width:220px; line-height:1.5;
-    border:1px solid var(--turquoise);
-}
-
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
     .grid-layout{ flex-direction:column; }
@@ -362,7 +335,6 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
 @media (max-width:600px){
     .hero h1{ font-size:2.1rem; }
     .panel{ padding:24px; }
-    .draft-note{ display:none; }
 }
 </style>
 </head>
@@ -397,18 +369,17 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
     </div>
 
     <div class="hero-inner">
-        <div class="eyebrow"><span class="dot"></span> Génie Chimique &amp; Procédés</div>
+        <div class="eyebrow"><span class="dot"></span> Formulation Cosmétique &amp; R&amp;D</div>
 
-        <div class="avatar-ring"><div class="avatar">PN</div></div>
+        <div class="avatar-ring"><div class="avatar"><img src="images/hejer-img.jpeg" alt="Hajer Chakroun"></div></div>
 
-        <h1>[Prénom] <em>[Nom]</em></h1>
-        <p class="role">Ingénieure Chimiste <span class="sep">·</span> Procédés &amp; Contrôle Qualité</p>
-        <p class="baseline">[Une phrase d'introduction : par ex. « Ingénieure diplômée spécialisée dans l'optimisation des procédés industriels, le contrôle qualité et la R&D de formulations. » — à remplacer avec son vrai profil]</p>
+        <h1>Hajer <em>Chakroun</em></h1>
+        <p class="role">Ingénieure Chimiste Senior <span class="sep">·</span> Formulation Cosmétique <span class="sep">·</span> R&amp;D</p>
+        <p class="baseline">7 années d'expérience dans la formulation, le développement de produits et le support technico-commercial en matières premières cosmétiques — skincare, haircare, body care, sun care et maquillage.</p>
 
         <div class="contact-row">
-            <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> prenom.nom@email.com</a>
-            <a href="tel:+21600000000"><i class="fas fa-phone"></i> (+216) 00 000 000</a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i> Profil LinkedIn</a>
+            <a href="mailto:chakrounhajer01@gmail.com"><i class="fas fa-envelope"></i> chakrounhajer01@gmail.com</a>
+            <a href="tel:+21699113667"><i class="fas fa-phone"></i> (+216) 99 113 667</a>
             <span><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</span>
         </div>
 
@@ -428,78 +399,81 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
     <!-- SIDEBAR -->
     <aside class="col-side">
         <div class="panel visible">
-            <h3 class="panel-title"><i class="fas fa-vial"></i> Compétences</h3>
+            <h3 class="panel-title"><i class="fas fa-vial"></i> Domaines d'expertise</h3>
 
-            <div class="side-block-title">Procédés &amp; Production</div>
+            <div class="side-block-title">Formulation &amp; R&amp;D</div>
             <div class="tile-grid">
-                <div class="tile"><span class="sym">Pc</span><span class="lbl">Procédés chimiques</span></div>
-                <div class="tile"><span class="sym">Op</span><span class="lbl">Optimisation process</span></div>
+                <div class="tile"><span class="sym">Fo</span><span class="lbl">Formulation</span></div>
+                <div class="tile"><span class="sym">Pr</span><span class="lbl">Prototypes</span></div>
                 <div class="tile"><span class="sym">Sc</span><span class="lbl">Scale-up</span></div>
             </div>
 
-            <div class="side-block-title">Laboratoire &amp; Analyse</div>
+            <div class="side-block-title">Technologies cosmétiques</div>
             <div class="tile-grid">
-                <div class="tile"><span class="sym">Hp</span><span class="lbl">HPLC / GC</span></div>
-                <div class="tile"><span class="sym">Sp</span><span class="lbl">Spectroscopie</span></div>
-                <div class="tile"><span class="sym">Ti</span><span class="lbl">Titrage</span></div>
+                <div class="tile"><span class="sym">Em</span><span class="lbl">Émulsions</span></div>
+                <div class="tile"><span class="sym">Uv</span><span class="lbl">Filtres UV</span></div>
+                <div class="tile"><span class="sym">Ts</span><span class="lbl">Tensioactifs</span></div>
+                <div class="tile"><span class="sym">Po</span><span class="lbl">Polymères</span></div>
+                <div class="tile"><span class="sym">Si</span><span class="lbl">Silicones</span></div>
+                <div class="tile"><span class="sym">Pg</span><span class="lbl">Pigments</span></div>
             </div>
 
-            <div class="side-block-title">Qualité &amp; Normes</div>
+            <div class="side-block-title">Applications</div>
             <div class="tile-grid">
-                <div class="tile"><span class="sym">Iso</span><span class="lbl">ISO 9001</span></div>
-                <div class="tile"><span class="sym">Hs</span><span class="lbl">HSE</span></div>
-                <div class="tile"><span class="sym">Cq</span><span class="lbl">Contrôle qualité</span></div>
+                <div class="tile"><span class="sym">Sk</span><span class="lbl">Skincare</span></div>
+                <div class="tile"><span class="sym">Hc</span><span class="lbl">Haircare</span></div>
+                <div class="tile"><span class="sym">Sn</span><span class="lbl">Sun care</span></div>
+                <div class="tile"><span class="sym">Bc</span><span class="lbl">Body care</span></div>
+                <div class="tile"><span class="sym">Mu</span><span class="lbl">Maquillage</span></div>
+                <div class="tile"><span class="sym">Ny</span><span class="lbl">Nettoyants</span></div>
+            </div>
+
+            <div class="side-block-title">Technico-commercial</div>
+            <div class="tile-grid">
+                <div class="tile"><span class="sym">Su</span><span class="lbl">Support client</span></div>
+                <div class="tile"><span class="sym">B2b</span><span class="lbl">Dév. B2B</span></div>
+                <div class="tile"><span class="sym">Gp</span><span class="lbl">Gestion projet</span></div>
             </div>
         </div>
 
         <div class="panel visible">
             <h3 class="panel-title"><i class="fas fa-graduation-cap"></i> Formation</h3>
             <div class="edu-item">
-                <div class="deg">[Diplôme d'Ingénieur / Master en Génie Chimique]</div>
-                <div class="school"><i class="fas fa-university"></i> [Nom de l'école / université]</div>
-                <span class="yr">20XX – 20XX</span>
+                <div class="deg">Diplôme d'Ingénieur en Chimie Industrielle</div>
+                <div class="school"><i class="fas fa-university"></i> INSAT — Institut National des Sciences Appliquées et de Technologie, Tunis</div>
+                <span class="yr">2013 – 2016</span>
             </div>
             <div class="edu-item">
-                <div class="deg">[Licence / Classes préparatoires]</div>
-                <div class="school"><i class="fas fa-university"></i> [Établissement]</div>
-                <span class="yr">20XX – 20XX</span>
+                <div class="deg">Cycle Préparatoire Intégré — Chimie &amp; Biologie</div>
+                <div class="school"><i class="fas fa-university"></i> INSAT, Tunis</div>
+                <span class="yr">2011 – 2013</span>
             </div>
             <div class="edu-item">
-                <div class="deg">Baccalauréat — [Mention]</div>
-                <div class="school"><i class="fas fa-school"></i> [Lycée]</div>
-                <span class="yr">20XX</span>
+                <div class="deg">Baccalauréat — Mathématiques</div>
+                <div class="school"><i class="fas fa-school"></i> Tunisie</div>
+                <span class="yr">2011</span>
             </div>
         </div>
 
         <div class="panel visible">
             <h3 class="panel-title"><i class="fas fa-language"></i> Langues</h3>
-            <div class="lang-row"><span class="name">Français</span><div class="lang-bar"><span style="width:100%"></span></div></div>
             <div class="lang-row"><span class="name">Arabe</span><div class="lang-bar"><span style="width:100%"></span></div></div>
+            <div class="lang-row"><span class="name">Français</span><div class="lang-bar"><span style="width:100%"></span></div></div>
             <div class="lang-row"><span class="name">Anglais</span><div class="lang-bar"><span style="width:80%"></span></div></div>
         </div>
 
         <div class="panel visible">
-            <h3 class="panel-title"><i class="fas fa-certificate"></i> Certifications</h3>
-            <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                    <div class="t">[Nom de la certification]</div>
-                    <div class="d">Obtenue : [Mois Année]</div>
-                </div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                    <div class="t">[Nom de la certification]</div>
-                    <div class="d">Obtenue : [Mois Année]</div>
-                </div>
-            </div>
-            <div class="cert-item">
-                <div class="cert-icon"><i class="fas fa-award"></i></div>
-                <div class="cert-info">
-                    <div class="t">[Nom de la certification]</div>
-                    <div class="d">Obtenue : [Mois Année]</div>
-                </div>
+            <h3 class="panel-title"><i class="fas fa-star"></i> Valeur ajoutée</h3>
+            <div class="tag-cloud">
+                <span class="vtag">Expertise formulation</span>
+                <span class="vtag">Innovation cosmétique</span>
+                <span class="vtag">R&amp;D</span>
+                <span class="vtag">Matières premières</span>
+                <span class="vtag">Support technique</span>
+                <span class="vtag">Dév. commercial B2B</span>
+                <span class="vtag">Gestion de projets</span>
+                <span class="vtag">Fournisseurs internationaux</span>
+                <span class="vtag">Accompagnement industriel</span>
             </div>
         </div>
     </aside>
@@ -509,29 +483,30 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
 
         <section class="panel" id="profil">
             <h3 class="panel-title"><i class="fas fa-user-tie"></i> Profil professionnel</h3>
-            <div class="lead-quote">« [Citation ou phrase d'accroche décrivant son approche professionnelle — à personnaliser] »</div>
+            <div class="lead-quote">« De la formule au marché : concevoir des produits cosmétiques performants, stables et adaptés aux contraintes réelles de l'industrialisation. »</div>
             <div class="profile-text">
-                <p>Titulaire d'un <strong>diplôme d'ingénieur en génie chimique</strong>, [elle possède X années d'expérience] dans [domaine : industrie pharmaceutique / agroalimentaire / pétrochimie / cosmétique — à préciser].</p>
-                <p>Spécialisée en <strong>contrôle qualité, optimisation des procédés</strong> et [autre spécialité], avec une approche rigoureuse orientée résultats et amélioration continue.</p>
+                <p>Ingénieure Chimiste avec <strong>7 années d'expérience</strong> dans l'industrie cosmétique, spécialisée dans la formulation, le développement de produits et le support technique auprès de fabricants et de fournisseurs de matières premières.</p>
+                <p>Experte en <strong>systèmes émulsionnés, tensioactifs, filtres UV, polymères, silicones, pigments et actifs</strong>, de la conception du concept jusqu'aux essais laboratoire, à l'optimisation de la formule et à l'accompagnement du passage à l'échelle industrielle.</p>
+                <p>Double expertise <strong>technique et commerciale</strong> : elle accompagne les fabricants dans leurs projets d'innovation tout en développant et fidélisant un portefeuille de clients industriels.</p>
             </div>
 
             <h3 style="margin-top:34px;margin-bottom:6px;font-size:1.05rem;color:var(--navy);font-family:'Fraunces',serif;">Points forts</h3>
             <div class="strength-grid">
                 <div class="strength">
                     <div class="ic" style="background:linear-gradient(135deg,var(--turquoise),#0d7d78);"><i class="fas fa-flask"></i></div>
-                    <div><h4>Chimie analytique</h4><p>Analyses, essais et validation en laboratoire</p></div>
+                    <div><h4>Formulation &amp; R&amp;D</h4><p>Conception, essais laboratoire, optimisation et scale-up</p></div>
                 </div>
                 <div class="strength">
-                    <div class="ic" style="background:linear-gradient(135deg,var(--green),#3f6b52);"><i class="fas fa-industry"></i></div>
-                    <div><h4>Procédés industriels</h4><p>Optimisation, scale-up, suivi de production</p></div>
+                    <div class="ic" style="background:linear-gradient(135deg,var(--green),#3f6b52);"><i class="fas fa-sun"></i></div>
+                    <div><h4>Technologies cosmétiques</h4><p>Émulsions, filtres UV, tensioactifs, pigments, actifs</p></div>
                 </div>
                 <div class="strength">
-                    <div class="ic" style="background:linear-gradient(135deg,var(--navy-2),var(--navy));"><i class="fas fa-shield-alt"></i></div>
-                    <div><h4>Qualité &amp; HSE</h4><p>Normes ISO, sécurité, conformité réglementaire</p></div>
+                    <div class="ic" style="background:linear-gradient(135deg,var(--navy-2),var(--navy));"><i class="fas fa-handshake"></i></div>
+                    <div><h4>Support technico-commercial</h4><p>Accompagnement client, devis, développement B2B</p></div>
                 </div>
                 <div class="strength">
-                    <div class="ic" style="background:linear-gradient(135deg,#4a9d95,var(--turquoise));"><i class="fas fa-chart-line"></i></div>
-                    <div><h4>Amélioration continue</h4><p>Réduction des coûts, gains de rendement</p></div>
+                    <div class="ic" style="background:linear-gradient(135deg,#4a9d95,var(--turquoise));"><i class="fas fa-lightbulb"></i></div>
+                    <div><h4>Innovation &amp; veille</h4><p>Nouvelles matières premières, tendances marché</p></div>
                 </div>
             </div>
         </section>
@@ -540,32 +515,46 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
             <h3 class="panel-title"><i class="fas fa-briefcase"></i> Expérience professionnelle</h3>
             <div class="timeline">
                 <div class="tl-item current">
-                    <div class="tl-role">[Intitulé du poste]</div>
-                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
-                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – Présent</span>
-                    <h5><i class="fas fa-vial"></i> Missions principales</h5>
+                    <div class="tl-role">Ingénieure Technico-Commerciale — Industrie Cosmétique</div>
+                    <div class="tl-org">
+                        <div class="logo"><img src="images/logos/ics-logo.png" alt="ICS Logo"></div>
+                        International Cosmetics Services (ICS) — Tunisie
+                    </div>
+                    <span class="tl-date"><i class="far fa-calendar"></i> Mai 2019 – Aujourd'hui</span>
+
+                    <h5><i class="fas fa-handshake"></i> Expertise technique &amp; développement commercial</h5>
                     <ul>
-                        <li>[Mission ou réalisation clé n°1]</li>
-                        <li>[Mission ou réalisation clé n°2]</li>
-                        <li>[Mission ou réalisation clé n°3]</li>
+                        <li>Gestion et développement d'un portefeuille de fabricants cosmétiques en Tunisie, avec accompagnement technique dans la sélection des matières premières</li>
+                        <li>Analyse des besoins clients et proposition de solutions adaptées en performance, coût et application</li>
+                        <li>Élaboration de propositions commerciales et animation de présentations techniques et démonstrations produits</li>
+                        <li>Coordination des projets techniques avec fournisseurs et partenaires internationaux</li>
+                    </ul>
+
+                    <h5><i class="fas fa-flask"></i> Formulation &amp; R&amp;D</h5>
+                    <ul>
+                        <li>Conception et optimisation de formulations skincare, haircare, body care, sun care et maquillage (crèmes, sérums, shampoings, produits solaires, fonds de teint, mascaras...)</li>
+                        <li>Essais laboratoire, études de stabilité et de compatibilité, résolution des problématiques de formulation et de production</li>
+                        <li>Accompagnement des clients lors du scale-up industriel et de l'adaptation des formules aux contraintes de fabrication</li>
+                    </ul>
+
+                    <h5><i class="fas fa-award"></i> Réalisations clés</h5>
+                    <ul>
+                        <li>Développement de nombreuses formulations commercialisées par des marques et fabricants tunisiens</li>
+                        <li>Représentation de l'entreprise lors de salons professionnels et rencontres techniques internationales</li>
                     </ul>
                 </div>
+
                 <div class="tl-item">
-                    <div class="tl-role">[Intitulé du poste précédent]</div>
-                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
-                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – [MM/AAAA]</span>
+                    <div class="tl-role">Ingénieure Stagiaire — Projet de Fin d'Études</div>
+                    <div class="tl-org">
+                        <div class="logo"><img src="images/logos/siphat-logo.png" alt="SIPHAT Logo"></div>
+                        SIPHAT — Société des Industries Pharmaceutiques de Tunisie
+                    </div>
+                    <span class="tl-date"><i class="far fa-calendar"></i> Février 2016 – Mai 2016</span>
                     <ul>
-                        <li>[Mission ou réalisation clé n°1]</li>
-                        <li>[Mission ou réalisation clé n°2]</li>
-                    </ul>
-                </div>
-                <div class="tl-item">
-                    <div class="tl-role">[Stage / premier poste]</div>
-                    <div class="tl-org"><i class="fas fa-building"></i> [Nom de l'entreprise] — [Ville, Pays]</div>
-                    <span class="tl-date"><i class="far fa-calendar"></i> [MM/AAAA] – [MM/AAAA]</span>
-                    <ul>
-                        <li>[Mission ou réalisation clé n°1]</li>
-                        <li>[Mission ou réalisation clé n°2]</li>
+                        <li>Étude de la dégradation de l'hydrochlorure de tétracycline par le procédé d'oxydation avancée Electro-Fenton</li>
+                        <li>Analyse de la cinétique de dégradation et de l'influence des paramètres opératoires sur les performances du traitement</li>
+                        <li>Réalisation d'analyses de la demande chimique en oxygène (DCO) et évaluation du niveau de minéralisation</li>
                     </ul>
                 </div>
             </div>
@@ -576,27 +565,27 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
             <p style="color:var(--ink-soft);margin-bottom:6px;">Aperçu des projets les plus marquants :</p>
             <div class="proj-grid">
                 <div class="proj-card">
-                    <div class="proj-top"><i class="fas fa-flask"></i><span class="proj-tag-abs">R&amp;D</span></div>
+                    <div class="proj-top"><img src="images/projects/skincare-formulation.jpg" alt="Formulation skincare"><span class="proj-tag-abs">Skincare</span></div>
                     <div class="proj-body">
-                        <h3>[Titre du projet 1]</h3>
-                        <p>[Courte description du projet — formulation, procédé, optimisation, etc.]</p>
-                        <div class="chip-row"><span class="chip">Chimie</span><span class="chip">Analyse</span><span class="chip">Qualité</span></div>
+                        <h3>Formulation soins visage &amp; anti-âge</h3>
+                        <p>Conception de crèmes et sérums avec optimisation de la stabilité, de la texture et de la sensorialité.</p>
+                        <div class="chip-row"><span class="chip">Émulsions</span><span class="chip">Actifs</span></div>
                     </div>
                 </div>
                 <div class="proj-card">
-                    <div class="proj-top"><i class="fas fa-industry"></i><span class="proj-tag-abs">Procédé</span></div>
+                    <div class="proj-top"><img src="images/projects/sun-care-uv.jpg" alt="Formulation sun care"><span class="proj-tag-abs">Sun Care</span></div>
                     <div class="proj-body">
-                        <h3>[Titre du projet 2]</h3>
-                        <p>[Courte description du projet — amélioration de process, réduction de coûts, etc.]</p>
-                        <div class="chip-row"><span class="chip">Production</span><span class="chip">Optimisation</span></div>
+                        <h3>Formulation protection solaire</h3>
+                        <p>Développement de produits solaires avec filtres UV organiques et minéraux, texture et SPF optimisés.</p>
+                        <div class="chip-row"><span class="chip">Filtres UV</span><span class="chip">Stabilité</span></div>
                     </div>
                 </div>
                 <div class="proj-card">
-                    <div class="proj-top"><i class="fas fa-shield-alt"></i><span class="proj-tag-abs">Qualité</span></div>
+                    <div class="proj-top"><img src="images/projects/electro-fenton-lab.jpg" alt="Projet Electro-Fenton"><span class="proj-tag-abs">R&amp;D</span></div>
                     <div class="proj-body">
-                        <h3>[Titre du projet 3]</h3>
-                        <p>[Courte description du projet — certification, mise en conformité, audit, etc.]</p>
-                        <div class="chip-row"><span class="chip">ISO</span><span class="chip">HSE</span></div>
+                        <h3>Dégradation Electro-Fenton — PFE</h3>
+                        <p>Étude du traitement d'oxydation avancée de la tétracycline, cinétique et minéralisation (SIPHAT).</p>
+                        <div class="chip-row"><span class="chip">Oxydation avancée</span><span class="chip">DCO</span></div>
                     </div>
                 </div>
             </div>
@@ -612,19 +601,16 @@ footer p{ max-width:520px; margin:0 auto 30px; color:rgba(247,245,239,0.7); }
 <!-- FOOTER -->
 <footer>
     <h2>Me contacter</h2>
-    <p>Ouverte aux opportunités professionnelles en génie chimique, procédés industriels et contrôle qualité.</p>
+    <p>Ouverte aux opportunités en formulation cosmétique, R&amp;D et développement technico-commercial.</p>
     <div class="foot-links">
-        <a href="mailto:prenom.nom@email.com"><i class="fas fa-envelope"></i> Email</a>
-        <a href="tel:+21600000000"><i class="fas fa-phone"></i> Téléphone</a>
-        <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:chakrounhajer01@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="tel:+21699113667"><i class="fas fa-phone"></i> Téléphone</a>
     </div>
     <div class="copy">
-        <p>© 2025 [Prénom Nom] – Ingénieure Chimiste. Tous droits réservés.</p>
+        <p>© 2025 Hajer Chakroun – Ingénieure Chimiste, Formulation Cosmétique &amp; R&amp;D. Tous droits réservés.</p>
         <p style="margin-top:8px;"><i class="fas fa-map-marker-alt"></i> Tunis, Tunisie</p>
     </div>
 </footer>
-
-<div class="draft-note"><i class="fas fa-pen"></i> Draft — les champs entre [crochets] seront remplacés par les vraies infos du CV.</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
